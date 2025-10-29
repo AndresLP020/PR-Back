@@ -1,29 +1,13 @@
 import multer from 'multer';
-import path from 'path';
-import fs from 'fs';
+import { CloudinaryStorage } from 'multer-storage-cloudinary';
+import cloudinary from '../config/cloudinary.js';
 
-// Asegurar que el directorio de uploads existe
-const uploadDir = 'uploads';
-const evidenciasDir = path.join(uploadDir, 'evidencias');
-
-if (!fs.existsSync(uploadDir)) {
-    fs.mkdirSync(uploadDir);
-}
-if (!fs.existsSync(evidenciasDir)) {
-    fs.mkdirSync(evidenciasDir);
-}
-
-// Configuración de almacenamiento
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, evidenciasDir);
-    },
-    filename: (req, file, cb) => {
-        // Sanitizar el nombre del archivo original
-        const sanitizedName = file.originalname.replace(/[^a-zA-Z0-9.-]/g, '_');
-        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-        cb(null, uniqueSuffix + '-' + sanitizedName);
-    }
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'uploads',
+    allowed_formats: ['jpg', 'png', 'jpeg', 'gif', 'pdf', 'doc', 'docx', 'ppt', 'pptx', 'txt', 'asm', 'xls', 'xlsx'],
+  },
 });
 
 // Filtro de archivos
