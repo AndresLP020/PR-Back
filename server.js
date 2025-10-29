@@ -23,9 +23,10 @@ const httpServer = createServer(app);
 notificationService.initialize(httpServer);
 
 // Middleware
+// Middleware CORS: permite peticiones desde el frontend en Vercel
 app.use(cors({
     origin: [
-        process.env.FRONTEND_URL || 'https://proyectointegrador-gestion-docente.vercel.app',
+        process.env.FRONTEND_URL,
         'https://proyectointegrador-gestion-docente.vercel.app',
         'https://pr-front-andreslp020s-projects.vercel.app'
     ],
