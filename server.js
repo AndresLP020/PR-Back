@@ -72,3 +72,6 @@ connectDB().then(() => {
     console.error('Error al conectar a la base de datos:', err);
     process.exit(1);
 });
+
+// Exportar la instancia de Express para Vercel
+export default app;
