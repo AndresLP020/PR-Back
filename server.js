@@ -75,3 +75,4 @@ connectDB().then(() => {
 
 // Exportar la instancia de Express para Vercel
 export default app;
+// ------------------------------------------------
