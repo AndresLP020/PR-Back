@@ -138,7 +138,7 @@ export const createAssignment = async (req, res) => {
             const individualAssignment = populatedAssignments[i];
             
             const teacherName = `${teacher.nombre} ${teacher.apellidoPaterno} ${teacher.apellidoMaterno}`;
-            const assignmentUrl = `${process.env.CLIENT_URL || 'http://localhost:5173'}/dashboard/assignments/${individualAssignment._id}`;
+            const assignmentUrl = `${process.env.CLIENT_URL || process.env.FRONTEND_URL || 'https://proyectointegrador-gestion-docente.vercel.app'}/dashboard/assignments/${individualAssignment._id}`;
 
             // Enviar correo electrónico
             await emailService.sendNewAssignmentNotification({
@@ -1750,7 +1750,7 @@ export const publishScheduledAssignments = async () => {
                                 description: assignment.description,
                                 dueDate: assignment.dueDate.toLocaleDateString('es-ES'),
                                 closeDate: assignment.closeDate.toLocaleDateString('es-ES'),
-                                assignmentUrl: `${process.env.FRONTEND_URL || 'http://localhost:5173'}/assignment/${assignment._id}`
+                                assignmentUrl: `${process.env.FRONTEND_URL || 'https://proyectointegrador-gestion-docente.vercel.app'}/assignment/${assignment._id}`
                             });
 
                             // Enviar notificación web

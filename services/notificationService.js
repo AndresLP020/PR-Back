@@ -9,7 +9,7 @@ class NotificationService {
   initialize(server) {
     this.io = new Server(server, {
       cors: {
-        origin: process.env.CLIENT_URL || 'http://localhost:5173',
+  origin: process.env.CLIENT_URL || process.env.FRONTEND_URL || 'https://proyectointegrador-gestion-docente.vercel.app',
         methods: ['GET', 'POST']
       }
     });
