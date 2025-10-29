@@ -25,8 +25,9 @@ notificationService.initialize(httpServer);
 // Middleware
 app.use(cors({
     origin: [
-    process.env.FRONTEND_URL || 'https://proyectointegrador-gestion-docente.vercel.app',
-        'https://proyectointegrador-gestion-docente.vercel.app'
+        process.env.FRONTEND_URL || 'https://proyectointegrador-gestion-docente.vercel.app',
+        'https://proyectointegrador-gestion-docente.vercel.app',
+        'https://pr-front-andreslp020s-projects.vercel.app'
     ],
     credentials: true
 }));
