@@ -13,7 +13,6 @@ import statsRoutes from './routes/statsRoutes.js';
 import errorHandler from './middleware/errorHandler.js';
 import notificationService from './services/notificationService.js';
 import { startScheduledAssignmentsCron } from './services/scheduledAssignmentsService.js';
-import cryptoRoutes from './routes/cryptoRoutes.js';
 
 dotenv.config();
 
@@ -53,9 +52,6 @@ app.use('/api/daily-records', dailyRecordRoutes);
 app.use('/api/carreras', carrerasRoutes);
 app.use('/api/semestres', semestresRoutes);
 app.use('/api/stats', statsRoutes);
-
-// Rutas para cifrado híbrido (RSA-OAEP + AES-GCM)
-app.use('/api/crypto', cryptoRoutes);
 
 // Manejador de errores
 app.use(errorHandler);
